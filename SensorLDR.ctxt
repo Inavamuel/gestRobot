@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=SensorLDR
+comment1.params=
+comment1.target=SensorLDR()
+comment2.params=fabricante\ codFabricante\ codSensor\ descripcionSen\ precioFab\ sens
+comment2.target=SensorLDR(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ Sensibilidad)
+comment3.params=
+comment3.target=java.lang.Enum\ getSensibilidad()
+comment4.params=sens
+comment4.target=void\ setSensibilidad(Sensibilidad)
+comment5.params=
+comment5.target=void\ imprimeInfoLDR()
+numComments=6

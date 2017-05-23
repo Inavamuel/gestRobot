@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=SensorUltrasonido
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SensorUltrasonido\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=SensorUltrasonido()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SensorUltrasonido\r\n
+comment2.params=fabricante\ codFabricante\ codSensor\ descripcionSen\ precioFab\ unidadMedida\ alcanceMax
+comment2.target=SensorUltrasonido(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ java.lang.String,\ double)
+comment3.params=
+comment3.target=java.lang.String\ getUnidadMedida()
+comment4.params=
+comment4.target=double\ getDistancia()
+comment5.params=distancia
+comment5.target=void\ setDistancia(double)
+comment6.params=
+comment6.target=double\ getAlcanceMax()
+comment7.params=alcanceMax
+comment7.target=void\ setAlcanceMax(double)
+comment8.params=
+comment8.target=void\ imprimeInfoUltrasonidos()
+numComments=9

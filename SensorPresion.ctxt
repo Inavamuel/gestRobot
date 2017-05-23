@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=SensorPresion
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SensorPresion\ here.\r\n\ clase\ que\ extiende\ a\ la\ clase\ sensor\ y\ que\ define\ un\ sensor\ de\ presi\u00F3n.\ cada\ sensor\ tendr\u00E1\ un\ valor\ maximo\ de\ presion\ medido\ en\ N/mm\u00B2\r\n\ \r\n\ @author\ iNavamuel\ \r\n\ @version\ v0.1\r\n
+comment1.params=
+comment1.target=SensorPresion()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SensorPresion\r\n
+comment2.params=fabricante\ codFabricante\ codSensor\ descripcionSen\ precioFab\ presionMax
+comment2.target=SensorPresion(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ double)
+comment3.params=
+comment3.target=double\ getPresionMaxima()
+comment3.text=\r\n\ Metodos\ get\ y\ set\ para\ definir\ y\ consultar\ la\ presi\u00F3n\ m\u00E1xima\ que\ puede\ soportar\ el\ sensor\r\n\ \r\n
+comment4.params=presionMax
+comment4.target=void\ setPresionMaxima(double)
+comment5.params=
+comment5.target=void\ imprimeInfoSensorPresion()
+numComments=6

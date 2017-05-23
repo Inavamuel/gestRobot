@@ -1,0 +1,132 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Date;
+import java.text.DecimalFormat;
+/*
+ * clase Pedido. contiene un lista de robots configurados.
+ * se define un id unico para cada pedido, debe contener una direccion de envio.
+ * se debe de almacenar un identificador para cliente y una fecha que corresponda 
+ * al dia del pedido que incluya (hora:minutos:segundos)
+ */
+
+public class Pedido{
+    /*
+     * variable propias de la clase
+     */
+    private int idPedido;
+    private ArrayList<Robot> pedidoRobot;
+    private Date fechaPedido;
+    private String clienteId;
+    private String direccionEnvio;
+    DecimalFormat formateador = new DecimalFormat("######.##\u00A4");
+    
+    
+    /*
+     * constructores
+     */
+    public Pedido(){
+        pedidoRobot = new ArrayList<Robot>();
+    }
+    public Pedido(int numeroPedido, String cliente, String direccionEnvio){
+        idPedido = numeroPedido;
+        clienteId = cliente;
+        this.direccionEnvio = direccionEnvio;
+        fechaPedido = new Date();
+        pedidoRobot = new ArrayList<Robot>();
+    }
+    /*
+     * Métodos get y set
+     */
+    public int getNumeroPedido(){
+        return idPedido;
+    }
+    public void setNumeroPedido(int numeroPedido){
+        idPedido = numeroPedido;
+    }
+    public String getClienteId(){
+        return clienteId;
+    }
+    public void setClienteId(String cliente){
+        clienteId = cliente;
+    }
+    public String getDireccionEnvio(){
+        return direccionEnvio;
+    }
+    public void setDireccionEnvio(String direccionAEnviar){
+        direccionEnvio = direccionAEnviar;
+    }
+    /*
+     * Método para añadir un robot al pedido
+     */
+    public void addRobot(Robot robot){
+        pedidoRobot.add(robot);
+        //System.out.println(pedidoRobot.size()); // log para ver que se han añadido los robots correctamente
+    }
+    /*
+     * Método para eliminar un robot del pedido
+     */
+    public void eliminaRobot(int idRobot){
+        Iterator<Robot> it = pedidoRobot.iterator();
+        int cont = 0;
+        if(it.hasNext()){
+            while(it.hasNext()){
+                Robot rob = it.next();
+                if(idRobot == rob.getUnicBaseId()){
+                    pedidoRobot.remove(rob);
+                    cont = 1;
+                    break;
+                }
+            }
+            if (cont == 0){
+                System.out.println("El robot que quiere eliminar no existe en el pedido.");
+                }
+        } 
+     }
+     public void printListaRobots(){
+        for(Robot robot : pedidoRobot){
+            robot.printInfoRobot();
+        }
+    }
+    public double calculaPrecioTotal(){
+        double precioTotal = 0;
+        for(Robot robot: pedidoRobot){
+            precioTotal = precioTotal + robot.getPvpRobot();
+            System.out.println(precioTotal);
+        }
+        switch(pedidoRobot.size()/5){
+            case 0:
+                precioTotal = precioTotal * 1.0;
+                break;
+            case 1:
+                precioTotal = precioTotal * 0.90;
+                break;
+            case 2:
+                precioTotal = precioTotal * 0.80;
+                break;
+            case 3:
+                precioTotal = precioTotal * 0.70;
+                break;
+            case 4:
+                precioTotal = precioTotal * 0.60;
+                break;
+            case 5:
+                precioTotal = precioTotal * 0.50;
+                break;
+            default:
+                precioTotal = precioTotal;
+        }
+        //formateador.format(precioTotal);
+        return precioTotal;
+    }
+    public void printPedido(){
+        System.out.println("\n***************************************");
+        System.out.println("Resumen del pedido #" + idPedido);
+        System.out.println("\nCliente #" + clienteId);
+        System.out.println("Dirección de envío: " + direccionEnvio);
+        //printListaRobots();
+        //calculaPrecioTotal();
+        System.out.println("\nEl precio total del pedido asciende a " + formateador.format(calculaPrecioTotal()));
+        System.out.println("\nFecha del pedido: " + fechaPedido);
+        System.out.println("***************************************");
+    }
+}

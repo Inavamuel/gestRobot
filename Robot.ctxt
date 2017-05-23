@@ -1,0 +1,35 @@
+#BlueJ class context
+comment0.target=Robot
+comment0.text=\r\n\ clase\ Robot\ para\ configurar\ robots\ con\ sensores.\r\n\ \r\n\ @author\ 53003151l-navamuel\ \r\n\ @version\ v0.2\ (15/05/2017\r\n\ \r\n
+comment1.params=
+comment1.target=Robot()
+comment1.text=\r\n\ Constructor\ para\ objetos\ de\ la\ clase\ Robot\r\n
+comment10.params=
+comment10.target=void\ precioVentaRobot()
+comment10.text=\r\n\ M\u00E9todo\ precioVentaRobot.\r\n\ El\ m\u00E9todo\ tiene\ un\ valor\ inicial\ y\ a\ el\ se\ van\ sumando\ los\ precios\ de\ los\ sensores\ incluidos\ en\ la\ configuraci\u00F3n\ del\ robot,\r\n\ una\ vez\ sumados\ todos\ los\ precios\ de\ los\ sensores\ se\ calcula\ el\ precio\ de\ venta\ al\ publico\ pvpRobot,\ que\ es\ el\ total\ de\ la\ suma\r\n\ de\ precios\ de\ fabrica\ incrementado\ en\ un\ 85%\ (\=\ *1.85)\r\n
+comment11.params=
+comment11.target=void\ printListaSensores()
+comment11.text=\r\n\ M\u00E9todo\ printListaSensores.\r\n\ Lista\ todos\ los\ sensores\ que\ hay\ en\ la\ configuraci\u00F3n\ del\ robot.\r\n
+comment12.params=
+comment12.target=void\ printInfoRobot()
+comment12.text=\r\n\ M\u00E9todo\ printInfoRobot.\r\n\ Imprime\ una\ informaci\u00F3n\ b\u00E1sica\ del\ robot,\ como\ clase\ de\ arquitectura\ y\ n\u00FAmero\ de\ la\ serie\ y\ luego\ lista\ los\ componentes\ instalados\r\n\ y\ el\ precio\ total\ de\ venta\ al\ p\u00FAblico.\r\n
+comment2.params=base\ numeroUnidad
+comment2.target=Robot(PlataformaBase,\ int)
+comment3.params=
+comment3.target=java.lang.Enum\ getTipoBaseArquitectura()
+comment3.text=\r\n\ M\u00E9todos\ get\ set\r\n
+comment4.params=baseArq
+comment4.target=void\ setTipoBaseArquitectura(PlataformaBase)
+comment5.params=
+comment5.target=int\ getUnicBaseId()
+comment6.params=numeroDeLaSerie
+comment6.target=void\ setUnicBaseId(int)
+comment7.params=
+comment7.target=double\ getPvpRobot()
+comment8.params=sens\ veces
+comment8.target=void\ addSensor(Sensor,\ int)
+comment8.text=addSensor\r\n\ a\u00F1ade\ un\ sensor\ a\ la\ configuraci\u00F3n\ del\ robot\ creado.\r\n
+comment9.params=codSensor
+comment9.target=void\ eliminarSensor(int)
+comment9.text=\ M\u00E9todo\ eliminarSensor.\ \r\n\ Recorre\ la\ lista\ de\ objetos\ del\ ArrayList,\ si\ existe\ un\ objeto\ compara\ los\ codigos\ de\ los\ sensores\ con\ el\ que\ hemos\ proporcionado\r\n\ si\ coincide\ elimina\ el\ sensor\ del\ array,\ si\ no\ coincide\ imprime\ un\ mensaje\ de\ error.\r\n\ si\ por\ el\ contrario\ en\ el\ ArrayList\ no\ existe\ ningun\ objeto\ imprime\ un\ mensaje\ advirtiendo\ de\ que\ la\ lista\ est\u00E1\ vacia.\r\n
+numComments=13

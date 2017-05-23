@@ -1,0 +1,32 @@
+
+/**
+ * Write a description of class SensorCCD here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class SensorCCD extends Sensor
+{
+    //Tipos y variables
+    private int resolucion;
+    private final String unidadMedida = "PPP";
+    //constructores
+    public SensorCCD(){}
+    public SensorCCD(String fabricante, String codFabricante, int codSensor, String descripcionSen, double precioFab, int resolucion){
+        super(fabricante, codFabricante, codSensor, descripcionSen = "Sensor que realiza capturas de imagenes", precioFab);
+        this.resolucion = resolucion;
+    }
+    
+    //metodos get y set
+    public int getResolucion(){
+        return resolucion;
+    }
+    public void setResolucion(int resolucion){
+        this.resolucion = resolucion;
+    }
+    //metodos de comportamiento
+    public void imprimeInfoCCD(){
+        super.printInfo();
+        System.out.println("El sensor tiene una resolución de captura de " + resolucion + " " + unidadMedida);
+    }
+}

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=SensorInfrarrojos
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SensorInfrarrojos\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=SensorInfrarrojos()
+comment2.params=fabricante\ codFabricante\ codSensor\ descripcionSen\ precioFab\ alcanceMin
+comment2.target=SensorInfrarrojos(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ double)
+comment3.params=
+comment3.target=double\ getAlcanceMinimo()
+comment4.params=alcanceMinimo
+comment4.target=void\ setAlcanceminimo(double)
+comment5.params=
+comment5.target=void\ imprimeInfoInfrarrojos()
+numComments=6

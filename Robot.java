@@ -1,0 +1,183 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+/**
+ * clase Robot para configurar robots con sensores.
+ * 
+ * @author 53003151l-navamuel 
+ * @version v0.2 (15/05/2017
+ * 
+ */
+public class Robot
+{
+    /* Variable y tipos
+     * unicBaseId lo utilizaremos para identificar uniquivocamente a cada robot configurado, combinado con la clase de arquitecura del robot
+     * tendremos identificadores unicos.
+     * tipoBase es un enumerado para decidir que clase de robot tenemos hay tres tipos ALFA, BETA, GAMMA.
+     * DecimalFormat, esta clase nos dará la opcion de formatear los precios.
+     */
+    private ArrayList<Sensor> listaSensores;
+    private int unicBaseId;
+    private PlataformaBase tipoBase;
+    //DecimalFormat formateador = new DecimalFormat("###,###.###\u00A4");
+    DecimalFormat formateador = new DecimalFormat("######.##\u00A4");
+    double pvpRobot;
+        /*
+     * Constructor para objetos de la clase Robot
+     */
+    public Robot(){
+        listaSensores = new ArrayList<Sensor>();
+    }
+    public Robot(PlataformaBase base, int numeroUnidad){
+        tipoBase = base;
+        unicBaseId = numeroUnidad;
+        listaSensores = new ArrayList<Sensor>();
+    }
+    /*
+     * Métodos get set
+     */
+    public Enum getTipoBaseArquitectura(){
+        return tipoBase;
+    }
+    public void setTipoBaseArquitectura(PlataformaBase baseArq){
+        tipoBase = baseArq;
+    }
+    public int getUnicBaseId(){
+        return unicBaseId;
+    }
+    public void setUnicBaseId(int numeroDeLaSerie){
+        unicBaseId = numeroDeLaSerie;
+    }
+    public double getPvpRobot(){
+        return pvpRobot;
+    }
+    /*
+     * Métodos de comportamiento
+     */
+    /*addSensor
+     * añade un sensor a la configuración del robot creado.
+     */
+    public void addSensor(Sensor sens, int veces){ //poner como argumento de entrada el tipo de sensor a comparar
+        for(int i=0; i < veces; i++){
+            if(listaSensores.isEmpty()){
+                listaSensores.add(sens);
+            }
+            else{
+                if(sens instanceof SensorLDR){
+                   Iterator<Sensor> sen = listaSensores.iterator();
+                   if (sen.hasNext()){
+                       int cont = 0;
+                       while (sen.hasNext()){
+                           Sensor s = sen.next();
+                           if((s instanceof SensorLDR) == (sens instanceof SensorLDR)){ //podemos poner aqui varios if, dependiendo d ela comparacion que queramos hacer
+                               System.out.println("Solamente se permite un sensor LDR por robot.");
+                               cont = 1;
+                               break;
+                            }
+                        }
+                       if (cont == 0){
+                           listaSensores.add(sens);
+                        }
+                    }
+                }
+                else if(sens instanceof SensorInfrarrojos){
+                    Iterator<Sensor> sen = listaSensores.iterator();
+                    if (sen.hasNext()){
+                        int cont = 0;
+                        while (sen.hasNext()){
+                            Sensor s = sen.next();
+                            if((s instanceof SensorUltrasonido) == (sens instanceof SensorInfrarrojos)){
+                                System.out.println("No se puede configurar un sensor de infrarrojos si hay uno de ultrasonidos instalado.");
+                                cont = 1;
+                                break;
+                            }
+                        }
+                        if (cont == 0){
+                            listaSensores.add(sens);
+                        }
+                    }
+                }
+                else if(sens instanceof SensorUltrasonido){
+                    Iterator<Sensor> sen = listaSensores.iterator();
+                    if (sen.hasNext()){
+                        int cont = 0;
+                        while (sen.hasNext()){
+                            Sensor s = sen.next();
+                            if((s instanceof SensorInfrarrojos) == (sens instanceof SensorUltrasonido)){
+                                System.out.println("No se puede configurar un sensor de ultrasonido si hay uno de infrarrojos instalado.");
+                                cont = 1;
+                                break;
+                            }
+                        }
+                        if (cont == 0){
+                            listaSensores.add(sens);
+                        }
+                    }    
+                }else{
+                    listaSensores.add(sens);
+                }
+            }
+        }
+    }
+    /* Método eliminarSensor. 
+     * Recorre la lista de objetos del ArrayList, si existe un objeto compara los codigos de los sensores con el que hemos proporcionado
+     * si coincide elimina el sensor del array, si no coincide imprime un mensaje de error.
+     * si por el contrario en el ArrayList no existe ningun objeto imprime un mensaje advirtiendo de que la lista está vacia.
+     */
+    public void eliminarSensor(int codSensor){
+        Iterator<Sensor> sen = listaSensores.iterator();
+        if (sen.hasNext()){
+            int cont = 0;
+            while (sen.hasNext()){
+                Sensor s = sen.next();
+                if(s.getCodigoSensor() == codSensor){
+                    listaSensores.remove(s);
+                    cont = 1;
+                    break;
+                }
+            }
+            }
+        else{
+              System.out.println("El codigo de sensor introducido no existe");
+        }
+    }
+    /*
+     * Método precioVentaRobot.
+     * El método tiene un valor inicial y a el se van sumando los precios de los sensores incluidos en la configuración del robot,
+     * una vez sumados todos los precios de los sensores se calcula el precio de venta al publico pvpRobot, que es el total de la suma
+     * de precios de fabrica incrementado en un 85% (= *1.85)
+     */   
+    public void precioVentaRobot(){
+        
+        for(Sensor sensor : listaSensores){
+                double precioSensor = sensor.getPrecioFabrica();
+                pvpRobot += precioSensor;
+        }
+        pvpRobot = pvpRobot * 1.85;
+        System.out.println("\nEl precio de venta al publico del Robot asciende a: " + formateador.format(pvpRobot));
+    }
+    /*
+     * Método printListaSensores.
+     * Lista todos los sensores que hay en la configuración del robot.
+     */
+    public void printListaSensores(){
+        for(Sensor sensor : listaSensores){
+            sensor.printInfo();
+        }
+    }
+    /*
+     * Método printInfoRobot.
+     * Imprime una información básica del robot, como clase de arquitectura y número de la serie y luego lista los componentes instalados
+     * y el precio total de venta al público.
+     */
+    public void printInfoRobot(){
+        System.out.println("\n***************************************");
+        System.out.println("Robot " + tipoBase + " " + unicBaseId);
+        System.out.println("\nListado de sensores configurados:");
+        printListaSensores();
+        precioVentaRobot();
+        System.out.println("***************************************");
+    }
+}

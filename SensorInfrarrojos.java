@@ -1,0 +1,34 @@
+
+/**
+ * Write a description of class SensorInfrarrojos here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class SensorInfrarrojos extends Sensor
+{
+    private final String unidadMedida = "centímetros";
+    private double alcanceMinimo;
+    //constructores
+    public SensorInfrarrojos(){}
+    public SensorInfrarrojos(String fabricante, String codFabricante, int codSensor, String descripcionSen, double precioFab, double alcanceMin)
+    {
+       super(fabricante, codFabricante, codSensor, descripcionSen = "Sensor que permite calcular distancias cortas entre un objeto y el robot", precioFab);
+       this.alcanceMinimo = alcanceMin;
+    }
+    
+    //metodos get y set
+    public double getAlcanceMinimo(){
+        return alcanceMinimo;
+    }
+    public void setAlcanceminimo(double alcanceMinimo){
+        this.alcanceMinimo = alcanceMinimo;
+    }
+    
+    //metodos de comportamiento
+    public void imprimeInfoInfrarrojos(){
+        super.printInfo();
+        System.out.println("Alcance mínimo del sensor: " + alcanceMinimo + " " + unidadMedida);
+    }
+    
+}
