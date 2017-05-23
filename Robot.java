@@ -51,6 +51,7 @@ public class Robot
         unicBaseId = numeroDeLaSerie;
     }
     public double getPvpRobot(){
+        precioVentaRobot();
         return pvpRobot;
     }
     /*
